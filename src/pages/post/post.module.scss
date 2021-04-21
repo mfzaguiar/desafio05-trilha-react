@@ -15,7 +15,7 @@
 .content {
   max-width: 1120px;
   margin: 3rem auto 0 auto;
-  padding: 0 2rem;
+  padding: 0 2rem 2rem 2rem;
 
   h1 {
     font-size: 2rem;
@@ -36,6 +36,40 @@
 
     div + div {
       margin-left: 1rem;
+    }
+  }
+
+  footer {
+    padding: 2rem 0;
+
+    hr {
+      border: 1px solid var(--info);
+      margin-bottom: 2rem;
+    }
+  }
+
+  .navigation {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .navigationItem {
+    display:flex;
+    flex-direction: column;
+    color: var(--white);
+    font-size: 1.225rem;
+    line-height: 1rem;
+    color: var(--white);
+
+    button {
+      margin-top: .5rem;
+      background: transparent;
+      color: var(--highlight);
+      font-weight: bold;
+      font-size: 1.225rem;
+      border: 0;
     }
   }
 }

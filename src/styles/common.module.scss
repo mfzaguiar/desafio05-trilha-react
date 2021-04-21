@@ -4,3 +4,23 @@
   padding: 0 2rem;
   height: calc(100vh - 7rem);
 }
+
+.exitPreview {
+    margin-top: 1rem;
+
+     a {
+        display:block;
+        background-color: var(--highlight);
+        padding: 1rem;
+        color: var(--white);
+        border-radius: 16px;
+        border: 0;
+        text-align: center;
+
+        transition: filter .2s;
+
+        &:hover {
+          filter: brightness(.8);
+        }
+     }
+}
