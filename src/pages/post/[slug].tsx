@@ -38,6 +38,20 @@ interface PostProps {
  export default function Post({ post }: PostProps) {
   const router = useRouter();
 
+  function countWords(str) {
+    str = str.replace(/(^\s*)|(\s*$)/gi,"");
+    str = str.replace(/[ ]{2,}/gi," ");
+    str = str.replace(/\n /,"\n");
+    return str.split(' ').length;
+    }
+
+  const numberOfWords = post.data.content[0].body.reduce((acc, element) => {
+      const words = countWords(element.text);
+      return acc += words;
+  }, 0)
+
+  const timeToRead = Math.ceil(numberOfWords/200);
+
   if (router.isFallback) {
     return <div>Carregando...</div>
   }
@@ -46,12 +60,12 @@ interface PostProps {
      <>
      <Header />
      <Head>
-       <title>{post?.data?.title} | Spacetraveling</title>
+       <title>{post.data?.title} | Spacetraveling</title>
      </Head>
       <main className={styles.container}>
-        <img src={post?.data?.banner?.url} alt="banner" />
+        <img src={post.data?.banner?.url} alt="banner" />
         <div className={styles.content}>
-            <h1>{post?.data?.title}</h1>
+            <h1>{post.data?.title}</h1>
             <div className={styles.infos}>
                 <div>
                   <AiOutlineCalendar />
@@ -63,11 +77,11 @@ interface PostProps {
                 </div>
                 <div style={{textTransform: 'capitalize'}}>
                   <AiOutlineUser />
-                  {post?.data?.author}
+                  {post.data?.author}
                 </div>
                 <div>
                   <AiOutlineClockCircle />
-                  4 min
+                  {timeToRead} min
                 </div>
             </div>
 

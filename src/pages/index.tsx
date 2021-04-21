@@ -53,7 +53,10 @@ export default function Home({ postsPagination: { next_page, results } }:HomePro
       const newPosts = response.results.map(post => {
         return {
           uid: post.uid,
-          first_publication_date: post.first_publication_date,
+          first_publication_date: format(parseISO(post.first_publication_date),
+          'dd MMM yyyy',
+          { locale: ptBR }
+          ),
           data: {
            title: post.data.title,
            subtitle: post.data.subtitle,
